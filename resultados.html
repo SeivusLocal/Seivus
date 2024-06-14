@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEIVUS - Resultados</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ADFF2F;
+            color: #000000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 5px 0;
+            background-color: #FFFFFF;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            margin-bottom: 20px;
+        }
+        header img {
+            height: 80px;
+        }
+        .content {
+            width: 80%;
+            max-width: 800px;
+            text-align: left;
+        }
+        .empresa {
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #FFFFFF;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+        }
+        .empresa img {
+            width: 80px;
+            height: auto;
+            margin-right: 20px;
+            border-radius: 5px;
+        }
+        .empresa-info {
+            flex: 1;
+        }
+        .empresa-info h3 {
+            margin: 0;
+            font-size: 18px;
+        }
+        .empresa-info p {
+            margin: 10px 0;
+        }
+        .empresa-info a {
+            text-decoration: none;
+            color: #4EC5DA;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html">
+            <img src="https://i.postimg.cc/d7BNQ7b2/SEIVUS-20240613-121628-0000-removebg-preview.png" alt="SEIVUS Logo" border="0">
+        </a>
+    </header>
+    <div class="content">
+        <!-- Exemplo de listagem para qualquer categoria selecionada -->
+        <div id="categoria-selecionada">
+            <h2>Empresas na Categoria Selecionada</h2>
+            <div class="empresa">
+                <img src="https://i.postimg.cc/8sT80QX5/SEIVUS-20240613-121628-0000.png" alt="Logotipo SEIVUS Store">
+                <div class="empresa-info">
+                    <h3>SEIVUS Store</h3>
+                    <p>Os melhores produtos sustentáveis do Brasil em um só lugar.</p>
+                    <a href="pagina-empresa.html">Ver mais</a>
+                </div>
+            </div>
+            <!-- Adicione mais empresas fictícias conforme necessário -->
+        </div>
+    </div>
+
+    <script>
+        // Função para exibir as empresas de acordo com a categoria selecionada
+        function showCategory(category) {
+            var categoriaSelecionada = document.getElementById('categoria-selecionada');
+            categoriaSelecionada.innerHTML = ''; // Limpa o conteúdo anterior
+
+            // Exemplo de empresa fictícia para todas as categorias
+            var empresaExemplo = `
+                <div class="empresa">
+                    <img src="https://i.postimg.cc/8sT80QX5/SEIVUS-20240613-121628-0000.png" alt="Logotipo SEIVUS Store">
+                    <div class="empresa-info">
+                        <h3>SEIVUS Store</h3>
+                        <p>Os melhores produtos sustentáveis do Brasil em um só lugar.</p>
+                        <a href="pagina-empresa.html">Ver mais</a>
+                    </div>
+                </div>
+            `;
+
+            // Adiciona o exemplo à categoria selecionada
+            categoriaSelecionada.innerHTML += empresaExemplo;
+        }
+
+        // Função para obter a categoria da URL e exibir as empresas correspondentes
+        function getAndShowCategoryFromUrl() {
+            var urlParams = new URLSearchParams(window.location.search);
+            var categoria = urlParams.get('categoria');
+            if (categoria) {
+                showCategory('categoria-' + categoria);
+            } else {
+                // Mostrar um exemplo padrão caso nenhuma categoria seja especificada na URL
+                showCategory('categoria-selecionada');
+            }
+        }
+
+        // Ao carregar a página, verificar se há uma categoria na URL e exibi-la
+        document.addEventListener('DOMContentLoaded', function() {
+            getAndShowCategoryFromUrl();
+        });
+    </script>
+</body>
+</html>
